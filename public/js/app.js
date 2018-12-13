@@ -249,7 +249,7 @@ postBtn.on('click', function() {
 
     var data = {
         mensaje: mensaje,
-        user: usuario,
+        usuario: usuario,
         lat: lat,
         lng: lng,
         foto: foto
@@ -284,7 +284,7 @@ function getMensajes() {
         .then(posts => {
 
             posts.forEach(post =>
-                crearMensajeHTML(post.mensaje, post.user, post.lat, post.lng, post.foto));
+                crearMensajeHTML(post.mensaje, post.usuario, post.lat, post.lng, post.foto));
         });
 
 
@@ -539,10 +539,10 @@ timeline.on('click', 'li', function() {
     let lat = $(this).data('lat')
     let lng = $(this).data('lng')
     let mensaje = $(this).data('mensaje')
-    let user = $(this).data('user')
+    let usuario = $(this).data('user')
 
     const shareOpts = {
-        title: user,
+        title: usuario,
         text: mensaje
     }
     if (tipo == 'mapa') {
