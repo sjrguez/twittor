@@ -31,8 +31,8 @@ class Camara {
         let canvas = document.createElement('canvas')
 
         // Colocar las dimensiones igual al elemnto del video
-        canvas.setAttribute('width', 300)
-        canvas.setAttribute('height', 300)
+        canvas.setAttribute('width', 500)
+        canvas.setAttribute('height', 500)
 
         // Colocar contexto
         let context = canvas.getContext('2d')

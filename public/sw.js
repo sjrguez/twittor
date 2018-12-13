@@ -144,10 +144,6 @@ self.addEventListener('push', e => {
     if (data.foto) {
         img = data.foto
     }
-    console.log(data);
-
-    console.log(img);
-
     const title = `${data.usuario} ha publicado`;
     const options = {
         body: data.cuerpo,
