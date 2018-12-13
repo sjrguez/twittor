@@ -36,6 +36,18 @@ router.post('/', function(req, res) {
 
     mensajes.push(mensaje);
 
+
+    let post = {
+        titulo: mensaje.mensaje,
+        cuerpo: mensaje.mensaje,
+        usuario: mensaje.user
+    }
+    if (mensaje.foto) {
+        post.foto = mensaje.foto
+    }
+
+
+    push.sendPush(post);
     // console.log(mensajes);
 
 

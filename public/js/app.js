@@ -264,21 +264,7 @@ postBtn.on('click', function() {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(res => {
-            let notif = {
-                titulo: "Tienes una notificacion",
-                cuerpo: mensaje,
-                usuairo: data.user
-            }
-
-            fetch('push', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(notif)
-            })
-        })
+        .then(res => console.log('app.js', res))
         .catch(err => console.log('app.js error:', err));
 
 
@@ -539,14 +525,16 @@ btnTomarFoto.on('click', () => {
 
 // Share API
 
+// if (!navigator.share) {
+//     // console.log("Navegador lo soporta");
+//     alert("Su navegador no soporta esta funcion")
+// }
 
 timeline.on('click', 'li', function() {
-    if (!navigator.share) {
-        // console.log("Navegador lo soporta");
-        alert("Su navegador no soporta compartir este mensaje")
-        return
-    }
 
+    // console.log($(this));
+    // console.log($(this).data('user'));
+    // console.log($(this).data('tipo'));
 
     let tipo = $(this).data('tipo')
     let lat = $(this).data('lat')
