@@ -134,7 +134,7 @@ function crearMensajeHTML(mensaje, personaje, lat, lng, foto) {
 
     timeline.prepend(content);
     cancelarBtn.click();
-
+    foto = null
 }
 
 function crearMensajeMapa(lat, lng, personaje) {
@@ -519,7 +519,6 @@ btnTomarFoto.on('click', () => {
 
     foto = camara.tomarFoto()
     camara.apagar()
-    foto = null
 });
 // 
 
