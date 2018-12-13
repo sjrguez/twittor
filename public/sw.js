@@ -144,14 +144,18 @@ self.addEventListener('push', e => {
     if (data.foto) {
         img = data.foto
     }
-    const title = `mensaje: ${data.titulo}`;
+    console.log(data);
+
+    console.log(img);
+
+    const title = `${data.usuario} ha publicado`;
     const options = {
         body: data.cuerpo,
         // icon: 'img/icons/icon-72x72.png',
         icon: `img/avatars/${ data.usuario }.jpg`,
         badge: 'img/favicon.ico',
         image: img,
-        vibrate: [125, 75, 125, 275, 200, 275, 125, 75, 125, 275, 200, 600, 200, 600],
+        vibrate: [125, 75, 125, 275, 200, 275, 125, 75],
         openUrl: '/',
         data: {
             // url: 'https://google.com',

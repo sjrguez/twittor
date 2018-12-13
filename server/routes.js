@@ -40,10 +40,8 @@ router.post('/', function(req, res) {
     let post = {
         titulo: mensaje.mensaje,
         cuerpo: mensaje.mensaje,
-        usuario: mensaje.user
-    }
-    if (mensaje.foto) {
-        post.foto = mensaje.foto
+        usuario: mensaje.user,
+        foto: mensaje.foto
     }
 
 
