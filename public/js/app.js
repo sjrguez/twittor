@@ -264,7 +264,21 @@ postBtn.on('click', function() {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(res => console.log('app.js', res))
+        .then(res => {
+            let notif = {
+                titulo: "Tienes una notificacion",
+                cuerpo: mensaje,
+                usuairo: data.user
+            }
+
+            fetch('push', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(notif)
+            })
+        })
         .catch(err => console.log('app.js error:', err));
 
 
@@ -493,8 +507,6 @@ btnLocation.on('click', () => {
         })
         // console.log('Botón geolocalización');
     navigator.geolocation.getCurrentPosition(geo => {
-        console.log(geo);
-
         mostrarMapaModal(geo.coords.latitude, geo.coords.longitude)
         lat = geo.coords.latitude
         lng = geo.coords.longitude
@@ -519,26 +531,22 @@ btnPhoto.on('click', () => {
 // Boton para tomar la foto
 btnTomarFoto.on('click', () => {
 
-    console.log('Botón tomar foto');
     foto = camara.tomarFoto()
-    console.log(foto);
-
     camara.apagar()
+    foto = null
 });
 // 
 
 // Share API
 
-// if (!navigator.share) {
-//     // console.log("Navegador lo soporta");
-//     alert("Su navegador no soporta esta funcion")
-// }
 
 timeline.on('click', 'li', function() {
+    if (!navigator.share) {
+        // console.log("Navegador lo soporta");
+        alert("Su navegador no soporta compartir este mensaje")
+        return
+    }
 
-    // console.log($(this));
-    // console.log($(this).data('user'));
-    // console.log($(this).data('tipo'));
 
     let tipo = $(this).data('tipo')
     let lat = $(this).data('lat')
@@ -558,6 +566,4 @@ timeline.on('click', 'li', function() {
     navigator.share(shareOpts)
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
-
-
 })
