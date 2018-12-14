@@ -135,9 +135,9 @@ self.addEventListener('sync', e => {
 // Escuchar PUSH
 self.addEventListener('push', e => {
 
-    // console.log(e);
 
     const data = JSON.parse(e.data.text());
+    console.log(data);
 
     let img = 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/main_element/public/media/image/2016/10/doctor-strange-easter-eggs.jpg?itok=iB26bmkE'
 
@@ -181,9 +181,6 @@ self.addEventListener('notificationclick', e => {
 
 
     console.log({ notificacion, accion });
-    // console.log(notificacion);
-    // console.log(accion);
-
 
     const respuesta = clients.matchAll()
         .then(clientes => {

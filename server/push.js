@@ -35,8 +35,8 @@ module.exports.addSubscription = (suscripcion) => {
 
 module.exports.sendPush = (post) => {
 
-
     const notificacionesEnviadas = [];
+    console.log(post);
 
 
     suscripciones.forEach((suscripcion, i) => {

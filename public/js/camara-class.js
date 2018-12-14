@@ -42,13 +42,13 @@ class Camara {
         context.drawImage(this.videoNode, 0, 0, canvas.width, canvas.height)
 
 
-        this.foto = context.canvas.toDataURL()
+        let foto = context.canvas.toDataURL()
 
 
         canvas = null
         context = null
 
-        return this.foto
+        return foto
 
 
 

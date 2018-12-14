@@ -86,9 +86,6 @@ let camaraFront = true
 // ===== Codigo de la aplicación
 
 function crearMensajeHTML(mensaje, personaje, lat, lng, foto) {
-
-    // console.log(mensaje, personaje, lat, lng);
-
     var content = `
     <li class="animated fadeIn fast"
     data-user="${ personaje }"
@@ -212,7 +209,7 @@ salirBtn.on('click', function() {
 
 // Boton de nuevo mensaje
 nuevoBtn.on('click', function() {
-
+    foto = null
     modal.removeClass('oculto');
     modal.animate({
         marginTop: '-=1000px',
@@ -240,6 +237,11 @@ cancelarBtn.on('click', function() {
 
 // Boton de enviar mensaje
 postBtn.on('click', function() {
+
+    if (contenedorCamara.hasClass('oculto')) {
+        foto = null
+    }
+
 
     var mensaje = txtMensaje.val();
     if (mensaje.length === 0) {
@@ -271,7 +273,9 @@ postBtn.on('click', function() {
 
     crearMensajeHTML(mensaje, usuario, lat, lng, foto);
 
-    foto = null;
+
+    contenedorCamara.addClass('oculto')
+
 });
 
 
@@ -512,6 +516,7 @@ btnPhoto.on('click', () => {
     // console.log('Inicializar camara')
     contenedorCamara.removeClass('oculto')
     camara.encender()
+    foto = null
 });
 
 
@@ -521,22 +526,19 @@ btnTomarFoto.on('click', () => {
 
     foto = camara.tomarFoto()
     camara.apagar()
-    foto = null
 });
 // 
 
 // Share API
 
-// if (!navigator.share) {
-//     // console.log("Navegador lo soporta");
-//     alert("Su navegador no soporta esta funcion")
-// }
 
 timeline.on('click', 'li', function() {
 
-    // console.log($(this));
-    // console.log($(this).data('user'));
-    // console.log($(this).data('tipo'));
+    if (!navigator.share) {
+        // console.log("Navegador lo soporta");
+        alert("Su navegador no soporta esta funcion")
+    }
+
 
     let tipo = $(this).data('tipo')
     let lat = $(this).data('lat')

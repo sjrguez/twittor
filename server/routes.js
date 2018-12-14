@@ -46,7 +46,6 @@ router.post('/', function(req, res) {
 
 
     push.sendPush(post);
-    // console.log(mensajes);
 
 
     res.json({
