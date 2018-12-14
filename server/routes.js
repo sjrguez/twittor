@@ -28,7 +28,7 @@ router.post('/', function(req, res) {
 
     const mensaje = {
         mensaje: req.body.mensaje,
-        usuario: req.body.usuario,
+        user: req.body.user,
         lat: req.body.lat,
         lng: req.body.lng,
         foto: req.body.foto
@@ -40,7 +40,7 @@ router.post('/', function(req, res) {
     let post = {
         titulo: mensaje.mensaje,
         cuerpo: mensaje.mensaje,
-        usuario: req.body.usuario,
+        usuario: req.body.user,
         foto: mensaje.foto
     }
 

@@ -134,7 +134,7 @@ function crearMensajeHTML(mensaje, personaje, lat, lng, foto) {
 
     timeline.prepend(content);
     cancelarBtn.click();
-    foto = null
+
 }
 
 function crearMensajeMapa(lat, lng, personaje) {
@@ -249,7 +249,7 @@ postBtn.on('click', function() {
 
     var data = {
         mensaje: mensaje,
-        usuario: usuario,
+        user: usuario,
         lat: lat,
         lng: lng,
         foto: foto
@@ -282,9 +282,11 @@ function getMensajes() {
     fetch('api')
         .then(res => res.json())
         .then(posts => {
+            console.log(posts)
 
             posts.forEach(post =>
-                crearMensajeHTML(post.mensaje, post.usuario, post.lat, post.lng, post.foto));
+
+                crearMensajeHTML(post.mensaje, post.user, post.lat, post.lng, post.foto));
         });
 
 
@@ -519,6 +521,7 @@ btnTomarFoto.on('click', () => {
 
     foto = camara.tomarFoto()
     camara.apagar()
+    foto = null
 });
 // 
 
@@ -539,10 +542,10 @@ timeline.on('click', 'li', function() {
     let lat = $(this).data('lat')
     let lng = $(this).data('lng')
     let mensaje = $(this).data('mensaje')
-    let usuario = $(this).data('user')
+    let user = $(this).data('user')
 
     const shareOpts = {
-        title: usuario,
+        title: user,
         text: mensaje
     }
     if (tipo == 'mapa') {
